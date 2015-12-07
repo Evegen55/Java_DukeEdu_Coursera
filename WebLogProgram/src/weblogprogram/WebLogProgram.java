@@ -17,7 +17,7 @@ import java.util.*;
  */
 public class WebLogProgram {
     
-    private String folder = "data/";
+    private final String folder = "data/";
  
     /**
      *
@@ -45,7 +45,7 @@ public class WebLogProgram {
      */
     public void testCountUniqueIPs(){
         LogAnalyzer la = new LogAnalyzer();
-        la.readFile(folder + "weblog1_log");
+        la.readFile(folder + "weblog2_log");
         System.out.println(la.countUniqueIPs());
     }
     
@@ -63,8 +63,8 @@ public class WebLogProgram {
      */
     public void testUniqueIPVisitsOnDay(){
         LogAnalyzer la = new LogAnalyzer();
-        la.readFile(folder + "weblog1_log");
-        int laU = la.uniqueIPVisitsOnDay("Mar 17");
+        la.readFile(folder + "weblog2_log");
+        int laU = la.uniqueIPVisitsOnDay("Sep 24");
         System.out.println(laU);
     }
 
@@ -73,8 +73,8 @@ public class WebLogProgram {
      */
     public void testCountUniqueIPsInRange(){
         LogAnalyzer la = new LogAnalyzer();
-        la.readFile(folder + "weblog1_log");
-        int laU = la.countUniqueIPsInRange(300,399);
+        la.readFile(folder + "weblog2_log");
+        int laU = la.countUniqueIPsInRange(200,299);
         System.out.println(laU);
     }
 
@@ -83,7 +83,7 @@ public class WebLogProgram {
      */
     public void testMostNumberVisitsByIP(){
         LogAnalyzer la = new LogAnalyzer();
-        la.readFile(folder + "weblog1_log");
+        la.readFile(folder + "weblog2_log");
         HashMap<String, Integer> par = la.countVisitsPerIP();
         int laU = la.mostNumberVisitsByIP(par);
         System.out.println(laU);
@@ -94,13 +94,42 @@ public class WebLogProgram {
      */
     public void testIPsMostVisits(){
         LogAnalyzer la = new LogAnalyzer();
-        la.readFile(folder + "weblog1_log");
+        la.readFile(folder + "weblog2_log");
         HashMap<String, Integer> parAm = la.countVisitsPerIP();
         ArrayList<String> par = la.iPsMostVisits(parAm);
         for (String le : par) {
              System.out.println(le);
          }
         
+    }
+    public void testIPsForDays(){
+        LogAnalyzer la = new LogAnalyzer();
+        la.readFile(folder + "weblog3-short_log");
+        HashMap<String, ArrayList<String>> parAm = la.iPsForDays();
+        
+        for(Map.Entry<String, ArrayList<String>> entry : parAm.entrySet()) {
+            String day = entry.getKey();
+            int numIps = entry.getValue().size();
+            System.out.println(day + "\t" + numIps);
+        }
+        
+    }
+    public void testDayWithMostIPVisits(){
+        LogAnalyzer la = new LogAnalyzer();
+        la.readFile(folder + "weblog2_log");
+        HashMap<String, ArrayList<String>> parAm = la.iPsForDays();
+        String day = la.dayWithMostIPVisits(parAm);
+        System.out.println(day + "\t");
+    }
+    public void testIPsWithMostVisitsOnDay(){
+        LogAnalyzer la = new LogAnalyzer();
+        la.readFile(folder + "weblog2_log");
+        HashMap<String, ArrayList<String>> parAm = la.iPsForDays();
+        String day = "Sep 30";
+        ArrayList<String> list = la.iPsWithMostVisitsOnDay(parAm,day);
+        for (String le : list) {
+             System.out.println(le);
+         }
     }
     /**
      * @param args the command line arguments
@@ -110,21 +139,15 @@ public class WebLogProgram {
         WebLogProgram tester = new WebLogProgram();
         //tester.testLogEntry();
         //tester.testLogAnalyzer();
-        //tester.testCountUniqueIPs();
+        tester.testCountUniqueIPs();
         //tester.testPrintAllHigherThanNum();
         //tester.testUniqueIPVisitsOnDay();
         //tester.testCountUniqueIPsInRange();
         //tester.testMostNumberVisitsByIP();
-        tester.testIPsMostVisits();
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        //tester.testIPsMostVisits();
+        //tester.testIPsForDays();
+        //tester.testDayWithMostIPVisits();
+        //tester.testIPsWithMostVisitsOnDay();
     }
     
 }

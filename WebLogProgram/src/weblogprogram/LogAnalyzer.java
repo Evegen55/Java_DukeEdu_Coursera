@@ -154,7 +154,7 @@ public class LogAnalyzer
      * visits to this website by a single IP address. For example, the call
      * mostNumberVisitsByIP on a HashMap formed using the file weblog3short_log returns 3.
      * @param par
-     * @return int
+     * @return This method returns the maximum number of visits to this website by a single IP address
      */
     public int mostNumberVisitsByIP(HashMap<String, Integer> par){
         Map.Entry<String,Integer> maxEntry = null;
@@ -197,11 +197,77 @@ public class LogAnalyzer
      * (examples are “Dec 05” and “Apr 22”). For example, for the file weblog3short_log ,
      * after building this HashMap, if you print it out, you will see that Sep 14 maps to one IP
      * address, Sep 21 maps to four IP addresses, and Sep 30 maps to five IP addresses.
+     * 
      * @return 
      */
     public HashMap<String, ArrayList<String>> iPsForDays () {
-    
-    
-    return new HashMap<String, ArrayList<String>>();
+        HashMap<String, ArrayList<String>> foo = new HashMap<String, ArrayList<String>>();
+        for(LogEntry le : records){
+            ArrayList<String> recordsCopy = new  ArrayList<String>();
+            String str = le.getAccessTime().toString().substring(4,10);
+            for(LogEntry leIn : records){
+                String strIn = leIn.getAccessTime().toString().substring(4,10);
+                String ipAdd = leIn.getIpAddress();
+                if(strIn.equals(str) && (!recordsCopy.contains(ipAdd))) {
+                    recordsCopy.add(ipAdd);
+                }
+            }
+            foo.put(str, recordsCopy);
+        }
+        return foo;
+    }
+    /**
+     * In the LogAnalyzer class, write the method dayWithMostIPVisits , which has one
+     * parameter that is a HashMap<String, ArrayList<String>> that uses records and maps
+     * days from web logs to an ArrayList of IP addresses that occurred on that day. This
+     * method returns the day that has the most IP address visits. If there is a tie, then return
+     * any such day. For example, if you use the file weblog3short_log , then this method
+     * should return the day most visited as Sep 30.
+     * @param par
+     * @return the day that has the most IP address visits
+     */
+    public String dayWithMostIPVisits(HashMap<String, ArrayList<String>> par) {
+        
+        HashMap<String, Integer> parMy = new HashMap<String, Integer>();
+        //преобразоваваем один хаш-мап(день/список IP) в другой (день/кол-во IP)
+        for(Map.Entry<String, ArrayList<String>> entry : par.entrySet()) {
+            String day = entry.getKey();
+            int numIps = entry.getValue().size();
+            parMy.put(day, numIps);
+        }
+        //ищем максимальное значение
+        Map.Entry<String,Integer> maxEntry = null;
+        for(Map.Entry<String,Integer> entry : parMy.entrySet()) {
+            if (maxEntry == null || entry.getValue() > maxEntry.getValue()) {
+                maxEntry = entry;
+            }
+        }
+       return maxEntry.getKey();
+    }
+    /**
+     * In the LogAnalyzer class, write the method iPsWithMostVisitsOnDay , which has two
+     * parameters—the first one is a HashMap<String, ArrayList<String>> that uses records
+     * and maps days from web logs to an ArrayList of IP addresses that occurred on that day,
+     * and the second parameter is a String representing a day in the format “MMM DD”
+     * described above. This method returns an ArrayList<String> of IP addresses that had the
+     * most accesses on the given day. For example, if you use the file weblog3short_log ,
+     * and the parameter for the day is “Sep 30”, then there are two IP addresses in the
+     * ArrayList returned: 61.15.121.171 and 177.4.40.87. Hint: This method should call
+     * another method you have written.
+     * 
+     * @param parOne records and maps days from web logs to an ArrayList of IP addresses 
+     * that occurred on that day
+     * @param someday day in the format “MMM DD”
+     * @return ArrayList<String> of IP addresses that had the most accesses on the given day
+     */
+    public ArrayList<String> iPsWithMostVisitsOnDay (HashMap<String, ArrayList<String>> parOne,String someday) {
+        ArrayList<String> list = null;
+        for(Map.Entry<String, ArrayList<String>> entry : parOne.entrySet()) {
+            String day = entry.getKey();
+            if(day.equals(someday)){
+            list = entry.getValue();
+            }
+        }
+       return list;
     }
 }
