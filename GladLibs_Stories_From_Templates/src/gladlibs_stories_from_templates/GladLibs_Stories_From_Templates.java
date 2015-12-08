@@ -11,7 +11,9 @@ package gladlibs_stories_from_templates;
  */
 public class GladLibs_Stories_From_Templates {
     
-    
+    /**
+     * 
+     */
     public void testerFindUnique() {
         WordFrequencies wF = new WordFrequencies();
         wF.findUnique();
@@ -22,16 +24,29 @@ public class GladLibs_Stories_From_Templates {
              System.out.println(wF.getMyFreqs().get(i));
         }
         System.out.println();
-        System.out.println(wF.findIndexOfMax());
+        System.out.println("The numbers of the most frequently word is" + "\t" + wF.findIndexOfMax());
     }
-    
+    /**
+     * 
+     */
+    public void testerFindAllCharacters(){
+        CharactersInPlay cps = new CharactersInPlay();
+        cps.findAllCharacters();
+        cps.charactersWithNumParts(1, 10);
+    }
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
         GladLibs_Stories_From_Templates ex = new GladLibs_Stories_From_Templates ();
+        // Assignment 1: Most Frequent Word
+        System.out.println();
+        System.out.println("Assignment 1: Most Frequent Word");
         ex.testerFindUnique();
+        // Assignment 2: Character Names
+        System.out.println();
+        System.out.println("Assignment 2: Character Names");
+        ex.testerFindAllCharacters();
         
     }
     

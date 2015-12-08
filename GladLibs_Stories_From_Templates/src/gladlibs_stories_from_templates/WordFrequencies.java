@@ -19,11 +19,17 @@ public class WordFrequencies {
     private final String folder = "data/";
     private final String filename = "testwordfreqs.txt";
     
+    /**
+     *
+     */
     public WordFrequencies() {
         myWords = new ArrayList<String>();
         myFreqs = new ArrayList<Integer>();
     }
     
+    /**
+     *
+     */
     public void findUnique() {
         myWords.clear();
         myFreqs.clear();
@@ -50,9 +56,18 @@ public class WordFrequencies {
     
     }
     
+    /**
+     *
+     * @return
+     */
     public ArrayList<String> getMyWords() {
         return myWords;
     }
+
+    /**
+     *
+     * @return
+     */
     public ArrayList<Integer> getMyFreqs() {
         return myFreqs;
     }
