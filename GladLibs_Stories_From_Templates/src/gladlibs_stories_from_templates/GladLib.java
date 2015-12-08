@@ -3,6 +3,10 @@ package gladlibs_stories_from_templates;
 import edu.duke.*;
 import java.util.*;
 
+/**
+ *
+ * @author Lartsev
+ */
 public class GladLib {
 	private ArrayList<String> adjectiveList;
 	private ArrayList<String> nounList;
@@ -17,12 +21,19 @@ public class GladLib {
 	private static String dataSourceURL = "http://dukelearntoprogram.com/course3/data";
 	private static String dataSourceDirectory = "data";
 	
-	public GladLib(){
+    /**
+     *
+     */
+    public GladLib(){
 		initializeFromSource(dataSourceDirectory);
 		myRandom = new Random();
 	}
 	
-	public GladLib(String source){
+    /**
+     *
+     * @param source
+     */
+    public GladLib(String source){
 		initializeFromSource(source);
 		myRandom = new Random();
 	}
@@ -128,7 +139,10 @@ public class GladLib {
 		return list;
 	}
 	
-	public void makeStory(){
+    /**
+     *
+     */
+    public void makeStory(){
 	    System.out.println("\n");
 		String story = fromTemplate("data/madtemplate.txt");
 		printOut(story, 60);
