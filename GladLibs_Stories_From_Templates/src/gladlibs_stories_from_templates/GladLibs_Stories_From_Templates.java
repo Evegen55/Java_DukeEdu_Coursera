@@ -32,7 +32,11 @@ public class GladLibs_Stories_From_Templates {
     public void testerFindAllCharacters(){
         CharactersInPlay cps = new CharactersInPlay();
         cps.findAllCharacters();
-        cps.charactersWithNumParts(1, 10);
+        cps.charactersWithNumParts(9, 16);
+        /*for test on the web-site
+        int find = cps.getNames().indexOf("ROSALIND");
+        System.out.println(cps.getCountNames().get(find));
+        */
     }
     /**
      * @param args the command line arguments

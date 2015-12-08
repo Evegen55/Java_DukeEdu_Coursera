@@ -16,7 +16,7 @@ public class CharactersInPlay {
     private ArrayList<String> names;
     private ArrayList<Integer> countNames;
     private final String folder = "data/";
-    private final String filename = "macbethSmall.txt";
+    private final String filename = "likeit.txt";
     
     /**
      *
