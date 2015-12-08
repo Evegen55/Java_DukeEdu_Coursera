@@ -38,6 +38,10 @@ public class GladLibs_Stories_From_Templates {
         System.out.println(cps.getCountNames().get(find));
         */
     }
+    public void testGladLib() {
+        GladLib glb = new GladLib();
+        glb.makeStory();
+    }
     /**
      * @param args the command line arguments
      */
@@ -51,6 +55,10 @@ public class GladLibs_Stories_From_Templates {
         System.out.println();
         System.out.println("Assignment 2: Character Names");
         ex.testerFindAllCharacters();
+        // Programming Exercise: Using GladLibs
+        System.out.println();
+        System.out.println("Programming Exercise: Using GladLibs");
+        ex.testGladLib();
         
     }
     
