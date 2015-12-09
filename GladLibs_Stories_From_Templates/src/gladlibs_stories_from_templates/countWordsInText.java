@@ -16,7 +16,15 @@ import java.util.ArrayList;
 public class countWordsInText {
     private final ArrayList<String> myWords;
     private final ArrayList<Integer> myNums;
+
+    /**
+     *
+     */
     public String folder;
+
+    /**
+     *
+     */
     public String filename;
     
     /**

@@ -6,6 +6,7 @@ import java.util.*;
 /**
  *
  * @author Lartsev
+ *  
  */
 public class GladLib {
     private ArrayList<String> adjectiveList;
@@ -180,9 +181,10 @@ public class GladLib {
         }
         System.out.println("Num of replaced words" + "\t" + trackList.size());
     }
-    //TODO
-    /*
-    @see data/Programming-Exercise---Using-GladLibs.pdf
+    /**TODO
+     * @see data/Programming-Exercise---Using-GladLibs.pdf
+     * @see data/programming-Exercise---Improving-GladLibs
+     * @see data/Programming-Exercise---Using-GladLibs
     */
     
 

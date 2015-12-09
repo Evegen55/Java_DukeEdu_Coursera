@@ -38,6 +38,10 @@ public class GladLibs_Stories_From_Templates {
         System.out.println(cps.getCountNames().get(find));
         */
     }
+
+    /**
+     *
+     */
     public void testGladLib() {
         GladLib glb = new GladLib();
         glb.makeStory();
