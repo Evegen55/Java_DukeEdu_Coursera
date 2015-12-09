@@ -181,10 +181,10 @@ public class GladLib {
         }
         System.out.println("Num of replaced words" + "\t" + trackList.size());
     }
-    /**TODO
-     * @see data/Programming-Exercise---Using-GladLibs.pdf
-     * @see data/programming-Exercise---Improving-GladLibs
-     * @see data/Programming-Exercise---Using-GladLibs
+    /**
+     * @todo data/Programming-Exercise---Using-GladLibs.pdf
+     * @todo data/programming-Exercise---Improving-GladLibs
+     * @todo data/Programming-Exercise---Using-GladLibs
     */
     
 

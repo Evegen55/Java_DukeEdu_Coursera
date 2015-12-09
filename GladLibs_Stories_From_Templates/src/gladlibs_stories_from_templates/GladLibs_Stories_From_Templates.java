@@ -5,6 +5,8 @@
  */
 package gladlibs_stories_from_templates;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Lartsev
@@ -46,23 +48,57 @@ public class GladLibs_Stories_From_Templates {
         GladLib glb = new GladLib();
         glb.makeStory();
     }
+    /*
+    Write a tester method that prompts the user for a file that contains a DNA strand 
+    (could be upper or lower case letters in the file, convert them all to uppercase, 
+    since case should not matter). 
+    Then for each of the three possible reading frames, this method
+         ○ builds a HashMap of codons to their number of occurrences in the DNA strand
+         ○ prints the total number of unique codons in the reading frame
+         ○ prints the most common codon and its count
+         ○ prints the codons and their number of occurrences for those codons whose
+           number of occurrences in this reading frame are between two numbers inclusive
+    */
+    public void testCountDNA() {
+        CountDNA cdna = new CountDNA();
+        
+       
+        for(int i = 0; i<4; i++) {
+            System.out.println("Reading frame starting with " + i);
+            ArrayList<String> listI= cdna.buildCodonsList();
+            for (String codonGet : listI) {
+                cdna.buildCodonMap(i, codonGet);
+            }
+            cdna.getMostCommonCodon();
+            cdna.printCodonCounts(1, 5);
+            listI.clear();
+        }
+        
+        
+        
+    }
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         GladLibs_Stories_From_Templates ex = new GladLibs_Stories_From_Templates ();
         // Assignment 1: Most Frequent Word
-        System.out.println();
-        System.out.println("Assignment 1: Most Frequent Word");
-        ex.testerFindUnique();
+        //System.out.println();
+        //System.out.println("Assignment 1: Most Frequent Word");
+        //ex.testerFindUnique();
         // Assignment 2: Character Names
-        System.out.println();
-        System.out.println("Assignment 2: Character Names");
-        ex.testerFindAllCharacters();
+        //System.out.println();
+        //System.out.println("Assignment 2: Character Names");
+        //ex.testerFindAllCharacters();
         // Programming Exercise: Using GladLibs
+        //System.out.println();
+        //System.out.println("Programming Exercise: Using GladLibs");
+        //ex.testGladLib();
+        //Programming Exercise: Improving GladLibs
         System.out.println();
-        System.out.println("Programming Exercise: Using GladLibs");
-        ex.testGladLib();
+        System.out.println("Programming Exercise: Improving GladLibss");
+        ex.testCountDNA();
+        
         
     }
     
