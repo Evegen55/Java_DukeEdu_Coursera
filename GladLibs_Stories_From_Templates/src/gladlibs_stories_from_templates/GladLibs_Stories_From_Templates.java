@@ -61,21 +61,16 @@ public class GladLibs_Stories_From_Templates {
     */
     public void testCountDNA() {
         CountDNA cdna = new CountDNA();
-        
-       
-        for(int i = 0; i<4; i++) {
+        for(int i = 0; i<3; i++) {
             System.out.println("Reading frame starting with " + i);
-            ArrayList<String> listI= cdna.buildCodonsList();
-            for (String codonGet : listI) {
-                cdna.buildCodonMap(i, codonGet);
+            ArrayList<String> buildCodonList = cdna.buildCodonList(i);
+            for (String dna : buildCodonList) {
+                cdna.buildCodonMap(i, dna);
             }
-            cdna.getMostCommonCodon();
-            cdna.printCodonCounts(1, 5);
-            listI.clear();
+            cdna.printCodonCounts(6, 6);
+            System.out.println("The most common codon is"+ "\t" + cdna.getMostCommonCodon() + "\n");
+            cdna.getMapCodons().clear();
         }
-        
-        
-        
     }
     /**
      * @param args the command line arguments
@@ -83,9 +78,9 @@ public class GladLibs_Stories_From_Templates {
     public static void main(String[] args) {
         GladLibs_Stories_From_Templates ex = new GladLibs_Stories_From_Templates ();
         // Assignment 1: Most Frequent Word
-        //System.out.println();
-        //System.out.println("Assignment 1: Most Frequent Word");
-        //ex.testerFindUnique();
+        System.out.println();
+        System.out.println("Assignment 1: Most Frequent Word");
+        ex.testerFindUnique();
         // Assignment 2: Character Names
         //System.out.println();
         //System.out.println("Assignment 2: Character Names");
@@ -95,9 +90,9 @@ public class GladLibs_Stories_From_Templates {
         //System.out.println("Programming Exercise: Using GladLibs");
         //ex.testGladLib();
         //Programming Exercise: Improving GladLibs
-        System.out.println();
-        System.out.println("Programming Exercise: Improving GladLibss");
-        ex.testCountDNA();
+        //System.out.println();
+        //System.out.println("Programming Exercise: Improving GladLibss");
+        //ex.testCountDNA();
         
         
     }

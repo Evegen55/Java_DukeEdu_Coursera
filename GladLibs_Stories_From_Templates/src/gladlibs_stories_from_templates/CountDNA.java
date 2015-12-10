@@ -16,18 +16,18 @@ import java.util.Map;
  */
 public class CountDNA {
     private HashMap<String, Integer> recordsCopy;
-    //private ArrayList<String> codonsList;
+    private ArrayList<String> codonsList;
     private String folder;
     private String fileName;
     
     
     public CountDNA() {
         recordsCopy = new HashMap<>();
-        //codonsList = new ArrayList<>();
+        codonsList = new ArrayList<>();
         folder = "data/";
         fileName = "smalldna.txt";
-        //fileName = "dnaMystery1";
-    }
+        fileName = "dnaMystery1";
+        }
     /*
     Write a void method named buildCodonMap that has two parameters, an int named
     start and a String named dna . This method will build a new map of codons mapped to
@@ -36,7 +36,7 @@ public class CountDNA {
     to make your map is empty before building it.
     */
     public void buildCodonMap(int start, String dna) {
-       
+       //recordsCopy.clear();
        FileResource fr = new FileResource(folder + fileName);
        int lengthDNAminus = 0;
        for(String word : fr.words()){
@@ -75,6 +75,7 @@ public class CountDNA {
                 maxEntry = entry;
             }
         }
+        System.out.println(maxEntry.getKey() + "\t" +maxEntry.getValue());
         return maxEntry.getKey();
         
     }
@@ -94,30 +95,32 @@ public class CountDNA {
         }
         
     }
-    public ArrayList<String> buildCodonsList() {
-       ArrayList<String> codonsList = new ArrayList<>();
+    public ArrayList<String> buildCodonList(int start) {
+       codonsList.clear();
        FileResource fr = new FileResource(folder + fileName);
        int lengthDNAminus = 0;
        for(String word : fr.words()){
            String trim = word.trim();
            int lengthDNA = trim.length();
            if(lengthDNA%3 == 1) {
-                lengthDNAminus =  lengthDNA-1;                                  //System.out.println("legth%3=1"+"\t"+lengthDNA);      
+                lengthDNAminus =  lengthDNA-1-start;                            //System.out.println("legth%3=1"+"\t"+lengthDNA);      
              } else if(lengthDNA%3 == 2) {
                  lengthDNAminus = lengthDNA-2;                                  //System.out.println("legth%3=2"+"\t"+lengthDNA); 
              } else {
                  lengthDNAminus = lengthDNA;                                    //System.out.println("legth%3=0"+"\t"+lengthDNA);
              }
-            for (int i = 0; i < lengthDNAminus-2; i++) {
+            for (int i = start; i < lengthDNAminus; i=i+3) {
                 String codon = trim.substring(i, i+3);
-                if(!codonsList.contains(codon)) {
-                    codonsList.add(codon);                                      System.out.println(codonsList.get(i));    
-                } 
+                
+                    if(!codonsList.contains(codon)) {
+                        codonsList.add(codon);                                  //System.out.println(codon);    
+                    } 
             }
         }
        return codonsList;
     }
-    /*public ArrayList<String> getCodonsList() {
-    return codonsList;
-    }*/
+    public HashMap<String, Integer> getMapCodons() {
+        return recordsCopy;
+    }
+    
 }
