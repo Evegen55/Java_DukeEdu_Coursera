@@ -72,6 +72,27 @@ public class GladLibs_Stories_From_Templates {
             cdna.getMapCodons().clear();
         }
     }
+    /*
+    Write the void method tester that has no parameters. This method should
+        ○ call buildWordFileMap() to select a group of files and build a HashMap of words,
+           with each word mapped to an ArrayList of the filenames this word appears in.
+        ○ determine the maximum number of files any word is in, considering all words.
+        ○ determine all the words that are in the maximum number of files and for each
+          such word, print the filenames of the files it is in.
+        ○ (optional) If the map is not too big, then you might want to print out the complete
+          map, all the keys, and for each key its ArrayList. This might be helpful to make
+          sure the map was built correctly.
+    */
+    public void testWordsInFiles() {
+        WordsInFiles win = new WordsInFiles();
+        win.buildWordFileMap();
+        int numMax = win.maxNumber();
+        System.out.println(numMax);
+        for(String st : win.wordsInNumFiles(numMax)) {
+            System.out.println(st);
+        }
+        
+    }
     /**
      * @param args the command line arguments
      */
@@ -93,6 +114,7 @@ public class GladLibs_Stories_From_Templates {
         //System.out.println();
         //System.out.println("Programming Exercise: Improving GladLibss");
         //ex.testCountDNA();
+        ex.testWordsInFiles();
         
         
     }
