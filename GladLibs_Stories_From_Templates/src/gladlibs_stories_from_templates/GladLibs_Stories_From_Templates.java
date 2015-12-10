@@ -78,9 +78,9 @@ public class GladLibs_Stories_From_Templates {
     public static void main(String[] args) {
         GladLibs_Stories_From_Templates ex = new GladLibs_Stories_From_Templates ();
         // Assignment 1: Most Frequent Word
-        System.out.println();
-        System.out.println("Assignment 1: Most Frequent Word");
-        ex.testerFindUnique();
+        //System.out.println();
+        //System.out.println("Assignment 1: Most Frequent Word");
+        //ex.testerFindUnique();
         // Assignment 2: Character Names
         //System.out.println();
         //System.out.println("Assignment 2: Character Names");
