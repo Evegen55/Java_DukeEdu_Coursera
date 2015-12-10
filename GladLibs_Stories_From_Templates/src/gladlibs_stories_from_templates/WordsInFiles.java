@@ -33,17 +33,19 @@ public class WordsInFiles {
      */
     private void addWordsFromFile (File f) {
         FileResource fr = new FileResource(f);
-        ArrayList<String> listWords = null;
+        ArrayList<String> listWords = new ArrayList<String>();
         for (String word : fr.words()) {
             if(!foo.containsKey(word)) {
-                listWords = new ArrayList<String>();
+                //listWords = new ArrayList<String>();
                 listWords.add(f.getName());
                 foo.put(word, listWords);
             } else {
+                
                 if(!listWords.contains(f.getName())) {
                     listWords.add(f.getName());
                 }
             }
+            //listWords.clear();
         }
     }
     /**
@@ -71,7 +73,7 @@ public class WordsInFiles {
      */
     public int maxNumber() {
         HashMap<String, Integer> parMy = new HashMap<String, Integer>();
-        //преобразоваваем один хаш-мап(день/список IP) в другой (день/кол-во IP)
+        //преобразоваваем один хаш-мап(слово/список файлов) в другой (день/кол-во IP)
         for(Map.Entry<String, ArrayList<String>> entry : foo.entrySet()) {
             String word = entry.getKey();
             int numFiles = entry.getValue().size();
@@ -95,7 +97,7 @@ public class WordsInFiles {
      * @return 
      */
     public ArrayList<String> wordsInNumFiles(int number) {
-        ArrayList<String> listWords = null;
+        ArrayList<String> listWords = new ArrayList<String>();
         for(Map.Entry<String, ArrayList<String>> entry : foo.entrySet()) {
             String word = entry.getKey();
             int numFiles = entry.getValue().size();

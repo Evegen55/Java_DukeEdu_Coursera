@@ -88,8 +88,10 @@ public class GladLibs_Stories_From_Templates {
         win.buildWordFileMap();
         int numMax = win.maxNumber();
         System.out.println(numMax);
-        for(String st : win.wordsInNumFiles(numMax)) {
+        ArrayList<String> wordsInNumFiles = win.wordsInNumFiles(numMax);
+        for(String st : wordsInNumFiles) {
             System.out.println(st);
+            //win.printFilesIn(st);
         }
         
     }
