@@ -95,6 +95,12 @@ public class GladLibs_Stories_From_Templates {
         }
         
     }
+    public void testGladLibMap() {
+        GladLibMap glbm = new GladLibMap();
+        glbm.makeStory();
+        System.out.println(glbm.totalWordsInMap());
+        System.out.println(glbm.totalWordsConsidered());
+    }
     /**
      * @param args the command line arguments
      */
@@ -114,11 +120,16 @@ public class GladLibs_Stories_From_Templates {
         //ex.testGladLib();
         //Programming Exercise: Improving GladLibs
         //System.out.println();
-        //System.out.println("Programming Exercise: Improving GladLibss");
+        //System.out.println("Programming Exercise: Improving GladLibs");
         //ex.testCountDNA();
-        ex.testWordsInFiles();
-        
-        
+        //System.out.println();
+        //System.out.println("Programming Exercise: Improving GladLibss");
+        //System.out.println("Assignment 2: Words in Files");
+        //ex.testWordsInFiles();
+        System.out.println();
+        System.out.println("Programming Exercise: Improving GladLibss");
+        System.out.println("Assignment 3: Maps Version of GladLibs");
+        ex.testGladLibMap();
     }
     
 }

@@ -19,9 +19,11 @@ import java.util.Map;
  */
 public class WordsInFiles {
     private HashMap<String, ArrayList<String>> foo;
+    private ArrayList<String> listWords;
     
     public WordsInFiles() {
         foo = new HashMap<String, ArrayList<String>>();
+        listWords = new ArrayList<String>();
     }
     /**
      * This method should add all the words from f into the map. If a word is not in
@@ -33,19 +35,20 @@ public class WordsInFiles {
      */
     private void addWordsFromFile (File f) {
         FileResource fr = new FileResource(f);
-        ArrayList<String> listWords = new ArrayList<String>();
+        String fileName = f.getName();
         for (String word : fr.words()) {
-            if(!foo.containsKey(word)) {
-                //listWords = new ArrayList<String>();
-                listWords.add(f.getName());
-                foo.put(word, listWords);
+            String trim = word.trim();
+            if (!foo.containsKey(trim)) {
+                listWords = new ArrayList<String>();
+                listWords.add(fileName);
+                foo.put(trim, listWords);                    
             } else {
-                
-                if(!listWords.contains(f.getName())) {
-                    listWords.add(f.getName());
-                }
+                listWords = foo.get(trim);
+                if(!listWords.contains(trim)) {
+                listWords.add(fileName);                     
+                foo.put(trim, listWords);                    
             }
-            //listWords.clear();
+            }
         }
     }
     /**
@@ -73,7 +76,7 @@ public class WordsInFiles {
      */
     public int maxNumber() {
         HashMap<String, Integer> parMy = new HashMap<String, Integer>();
-        //преобразоваваем один хаш-мап(слово/список файлов) в другой (день/кол-во IP)
+        //преобразоваваем один хаш-мап(слово/список файлов) в другой (слово/кол-во файлов)
         for(Map.Entry<String, ArrayList<String>> entry : foo.entrySet()) {
             String word = entry.getKey();
             int numFiles = entry.getValue().size();
