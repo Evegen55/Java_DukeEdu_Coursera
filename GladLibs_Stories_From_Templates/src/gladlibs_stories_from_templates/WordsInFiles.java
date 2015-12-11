@@ -122,7 +122,10 @@ public class WordsInFiles {
         for(Map.Entry<String, ArrayList<String>> entry : foo.entrySet()) {
             String wordInList = entry.getKey();
             for (String s : entry.getValue()) {
-                System.out.println(s);
+                if(word.equals(wordInList)) {
+                    System.out.println(s);
+                }
+                
             }
         }
     }

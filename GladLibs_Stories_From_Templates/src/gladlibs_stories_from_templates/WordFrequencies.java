@@ -17,7 +17,7 @@ public class WordFrequencies {
     private ArrayList<String> myWords;
     private ArrayList<Integer> myFreqs;
     private final String folder = "data/";
-    private final String filename = "hamlet.txt";
+    private final String filename = "errors.txt";
     
     /**
      *

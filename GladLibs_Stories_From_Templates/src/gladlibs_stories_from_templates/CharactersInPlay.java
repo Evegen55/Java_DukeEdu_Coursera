@@ -16,7 +16,7 @@ public class CharactersInPlay {
     private ArrayList<String> names;
     private ArrayList<Integer> countNames;
     private final String folder = "data/";
-    private final String filename = "likeit.txt";
+    private final String filename = "errors.txt";
     
     /**
      *
@@ -51,7 +51,7 @@ public class CharactersInPlay {
     public void findAllCharacters() {
         FileResource fr = new FileResource(folder+filename);
         for(String line : fr.lines()){
-            if(line.startsWith(" ") && line.contains(".")) {
+            if(line.startsWith("") && line.contains(".")) {
                 String[] lines = line.split("[.]");
                 update(lines[0]);
             }

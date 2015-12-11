@@ -26,7 +26,7 @@ public class CountDNA {
         codonsList = new ArrayList<>();
         folder = "data/";
         fileName = "smalldna.txt";
-        fileName = "dnaMystery1";
+        fileName = "dnaMystery2";
         }
     /*
     Write a void method named buildCodonMap that has two parameters, an int named

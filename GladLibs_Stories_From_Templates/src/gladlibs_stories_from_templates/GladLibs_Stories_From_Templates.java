@@ -34,7 +34,7 @@ public class GladLibs_Stories_From_Templates {
     public void testerFindAllCharacters(){
         CharactersInPlay cps = new CharactersInPlay();
         cps.findAllCharacters();
-        cps.charactersWithNumParts(9, 16);
+        cps.charactersWithNumParts(100, 1000);
         /*for test on the web-site
         int find = cps.getNames().indexOf("ROSALIND");
         System.out.println(cps.getCountNames().get(find));
@@ -67,7 +67,7 @@ public class GladLibs_Stories_From_Templates {
             for (String dna : buildCodonList) {
                 cdna.buildCodonMap(i, dna);
             }
-            cdna.printCodonCounts(6, 6);
+            cdna.printCodonCounts(0, 1000);
             System.out.println("The most common codon is"+ "\t" + cdna.getMostCommonCodon() + "\n");
             cdna.getMapCodons().clear();
         }
@@ -88,11 +88,16 @@ public class GladLibs_Stories_From_Templates {
         win.buildWordFileMap();
         int numMax = win.maxNumber();
         System.out.println(numMax);
-        ArrayList<String> wordsInNumFiles = win.wordsInNumFiles(numMax);
+        System.out.println();
+        
+        ArrayList<String> wordsInNumFiles = win.wordsInNumFiles(4);
         for(String st : wordsInNumFiles) {
             System.out.println(st);
             //win.printFilesIn(st);
         }
+        System.out.println(wordsInNumFiles.size());
+        System.out.println();
+        win.printFilesIn("sea");
         
     }
     public void testGladLibMap() {
@@ -113,7 +118,7 @@ public class GladLibs_Stories_From_Templates {
         // Assignment 2: Character Names
         //System.out.println();
         //System.out.println("Assignment 2: Character Names");
-        //ex.testerFindAllCharacters();
+        ex.testerFindAllCharacters();
         // Programming Exercise: Using GladLibs
         //System.out.println();
         //System.out.println("Programming Exercise: Using GladLibs");
@@ -126,10 +131,10 @@ public class GladLibs_Stories_From_Templates {
         //System.out.println("Programming Exercise: Improving GladLibss");
         //System.out.println("Assignment 2: Words in Files");
         //ex.testWordsInFiles();
-        System.out.println();
-        System.out.println("Programming Exercise: Improving GladLibss");
-        System.out.println("Assignment 3: Maps Version of GladLibs");
-        ex.testGladLibMap();
+        //System.out.println();
+        //System.out.println("Programming Exercise: Improving GladLibss");
+        //System.out.println("Assignment 3: Maps Version of GladLibs");
+        //ex.testGladLibMap();
     }
     
 }
