@@ -27,8 +27,18 @@ public class Cryptography_Keeping_Information_Secret {
     /**
      * @param args the command line arguments
      */
+    public void testWordPlay() {
+        WordPlay wp = new WordPlay();
+        String slovo = "slovo";
+        char ch = '*';
+        String ret = wp.replaceVowels(slovo, ch);
+        String ret1 = wp.emphasize("Mary Bella Abracadabra", 'a');
+        System.out.println(ret1);
+    } 
     public static void main(String[] args) {
         // TODO code application logic here
+        Cryptography_Keeping_Information_Secret ckis = new Cryptography_Keeping_Information_Secret();
+        ckis.testWordPlay();
     }
     
 }
