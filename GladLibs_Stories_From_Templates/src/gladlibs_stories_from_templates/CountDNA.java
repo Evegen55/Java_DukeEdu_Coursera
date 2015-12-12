@@ -75,7 +75,7 @@ public class CountDNA {
                 maxEntry = entry;
             }
         }
-        System.out.println(maxEntry.getKey() + "\t" +maxEntry.getValue());
+        //System.out.println(maxEntry.getKey() + "\t" +maxEntry.getValue());
         return maxEntry.getKey();
         
     }

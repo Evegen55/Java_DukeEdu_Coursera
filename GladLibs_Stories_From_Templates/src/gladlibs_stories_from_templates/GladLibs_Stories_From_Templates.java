@@ -45,7 +45,7 @@ public class GladLibs_Stories_From_Templates {
     public void testerFindAllCharacters(){
         CharactersInPlay cps = new CharactersInPlay();
         cps.findAllCharacters();
-        cps.charactersWithNumParts(100, 1000);
+        cps.charactersWithNumParts(1, 100);
         /*for test on the web-site
         int find = cps.getNames().indexOf("ROSALIND");
         System.out.println(cps.getCountNames().get(find));
@@ -101,14 +101,14 @@ public class GladLibs_Stories_From_Templates {
         System.out.println(numMax);
         System.out.println();
         
-        ArrayList<String> wordsInNumFiles = win.wordsInNumFiles(4);
+        ArrayList<String> wordsInNumFiles = win.wordsInNumFiles(7);
         for(String st : wordsInNumFiles) {
-            System.out.println(st);
+            //System.out.println(st);
             //win.printFilesIn(st);
         }
         System.out.println(wordsInNumFiles.size());
         System.out.println();
-        win.printFilesIn("sea");
+        win.printFilesIn("laid");
         
     }
     public void testGladLibMap() {
@@ -129,7 +129,7 @@ public class GladLibs_Stories_From_Templates {
         // Assignment 2: Character Names
         //System.out.println();
         //System.out.println("Assignment 2: Character Names");
-        ex.testerFindAllCharacters();
+        //ex.testerFindAllCharacters();
         // Programming Exercise: Using GladLibs
         //System.out.println();
         //System.out.println("Programming Exercise: Using GladLibs");
