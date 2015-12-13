@@ -33,6 +33,7 @@ public class Cryptography_Keeping_Information_Secret {
         char ch = '*';
         String ret = wp.replaceVowels(slovo, ch);
         String ret1 = wp.emphasize("Mary Bella Abracadabra", 'a');
+        boolean ret2 = wp.isVowel('A');
         System.out.println(ret1);
     } 
     public static void main(String[] args) {

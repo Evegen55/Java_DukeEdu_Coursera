@@ -22,8 +22,9 @@ public class WordPlay {
      */
     public boolean isVowel (char ch) {
         char chr = Character.toLowerCase(ch);
-        if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' || 
-                ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U' ) {
+        if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u'
+                // || ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U'
+                ) {
             return true;
         }
         return false;
@@ -68,25 +69,22 @@ public class WordPlay {
      * @param ch
      * @return 
      */
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! not working correctly!!
     public String emphasize(String phrase, char ch){
         StringBuilder sb = new StringBuilder();
-        char chr = Character.toLowerCase(ch);
+        //char chr = Character.toLowerCase(ch);
         char[] arr = phrase.toCharArray();
         for(int i = 0; i<arr.length; i++) {
             char c = arr[i];
-            if (!isVowel(c)) {
+            char chr = Character.toLowerCase(c);
+            if (!isVowel(chr) || chr != ch) {
                 sb = sb.append(c);
-            } else if((i%2 == 0) && c == chr){
+            } else if((i%2 == 0) && chr == ch){
                 
                 sb = sb.append('*');
-            } else if((i%2 != 0) && c == chr){
+            } else if((i%2 == 1) && chr == ch){
                 
                 sb = sb.append('+');
-            } else {
-                sb = sb.append(chr);
-            }
-            
+            } 
         }
         return sb.toString();
     }
