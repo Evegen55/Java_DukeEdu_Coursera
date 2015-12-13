@@ -207,6 +207,8 @@ public class GladLibMap {
         for(Map.Entry<String, ArrayList<String>> entry : foo.entrySet()) {
             total = total + entry.getValue().size();
         }
+        int sum = 0;
+       
         return total;
     }
     /**
