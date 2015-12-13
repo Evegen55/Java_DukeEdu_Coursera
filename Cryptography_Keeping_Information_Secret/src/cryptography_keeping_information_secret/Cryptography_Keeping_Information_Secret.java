@@ -35,11 +35,22 @@ public class Cryptography_Keeping_Information_Secret {
         String ret1 = wp.emphasize("Mary Bella Abracadabra", 'a');
         boolean ret2 = wp.isVowel('A');
         System.out.println(ret1);
-    } 
+    }
+    
+    public void testCaesarCipherMy() {
+        CaesarCipherMy cc = new CaesarCipherMy();
+        String ret1 = cc.encrypt("FIRST LEGION ATTACK EAST FLANK!", 23);
+        String ret2 = cc.encryptMod("First Legion", 23);
+        //System.out.println(ret1);
+        System.out.println(ret2);
+    }
     public static void main(String[] args) {
         // TODO code application logic here
         Cryptography_Keeping_Information_Secret ckis = new Cryptography_Keeping_Information_Secret();
+        //Assignment 1: Word Play
         ckis.testWordPlay();
+        //Assignment 2: Caesar Cipher
+        ckis.testCaesarCipherMy();
     }
     
 }
