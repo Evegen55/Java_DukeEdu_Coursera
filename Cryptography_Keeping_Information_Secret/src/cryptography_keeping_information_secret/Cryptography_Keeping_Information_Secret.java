@@ -40,15 +40,17 @@ public class Cryptography_Keeping_Information_Secret {
     public void testCaesarCipherMy() {
         CaesarCipherMy cc = new CaesarCipherMy();
         String ret1 = cc.encrypt("FIRST LEGION ATTACK EAST FLANK!", 23);
-        String ret2 = cc.encryptMod("First Legion", 23);
+        String ret2 = cc.encryptMod("At noon be in the conference room with your hat on for a surprise party. YELL LOUD!", 15);
+        String ret3 = cc.encryptTwoKeys("At noon be in the conference room with your hat on for a surprise party. YELL LOUD!", 8, 21);
         //System.out.println(ret1);
         System.out.println(ret2);
+        //System.out.println(ret3);
     }
     public static void main(String[] args) {
         // TODO code application logic here
         Cryptography_Keeping_Information_Secret ckis = new Cryptography_Keeping_Information_Secret();
         //Assignment 1: Word Play
-        ckis.testWordPlay();
+        //ckis.testWordPlay();
         //Assignment 2: Caesar Cipher
         ckis.testCaesarCipherMy();
     }

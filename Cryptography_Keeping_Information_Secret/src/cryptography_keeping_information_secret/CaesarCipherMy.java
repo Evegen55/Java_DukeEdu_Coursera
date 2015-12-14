@@ -52,20 +52,21 @@ public class CaesarCipherMy {
         String shiftedAbcSmall = small.substring(key)+small.substring(0,key);
         
         for(int i = 0; i < enc.length(); i++) {
+            //work with big letters 
             char currChar = enc.charAt(i);
-            System.out.print(currChar + "\t");
-            
             int idx = abc.indexOf(currChar);
-            System.out.println(idx);
-            
-            
             if(idx != -1){
                 char newChar = shiftedAbc.charAt(idx);
-                System.out.println("newChar" + "\t" + newChar + "\t");
                 enc.setCharAt(i, newChar);
+            } else {
+                //work with small letters
+                int idx_s = small.indexOf(currChar);
+                if(idx_s != -1) {
+                    char newCharSmall = shiftedAbcSmall.charAt(idx_s);
+                    enc.setCharAt(i, newCharSmall);
+                }
             }
         }
-        
         return enc.toString();
     }
     /**
@@ -81,7 +82,19 @@ public class CaesarCipherMy {
      * @return 
      */
     public String encryptTwoKeys(String input,int key1, int key2) {
-        return null;
+        String encKey1 = encryptMod(input,key1);
+        String encKey2 = encryptMod(input,key2);
+        StringBuilder enc = new StringBuilder(input);
+        for(int i = 0; i < enc.length(); i++) {
+            if (i%2 == 0) {
+                char currChar = encKey1.charAt(i);
+                enc.setCharAt(i, currChar);
+            } else  {
+                char currChar = encKey2.charAt(i);
+                enc.setCharAt(i, currChar);
+            }
+        }
+        return enc.toString();
     }
     
     
