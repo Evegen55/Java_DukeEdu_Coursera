@@ -5,6 +5,8 @@
  */
 package cryptography_keeping_information_secret;
 
+import edu.duke.FileResource;
+
 /**
  *
  * @author Lartsev
@@ -46,13 +48,24 @@ public class Cryptography_Keeping_Information_Secret {
         System.out.println(ret2);
         //System.out.println(ret3);
     }
+    public void testWordLengths() {
+        WordLengths wl = new WordLengths();
+        FileResource fr = new FileResource("data/smallHamlet.txt");
+        int counts[] = new int[31];
+        //wl.countWordLengths(fr, counts);
+        wl.countWordLengthsWithIsLettermethod(fr, counts);
+    }
+    
     public static void main(String[] args) {
         // TODO code application logic here
         Cryptography_Keeping_Information_Secret ckis = new Cryptography_Keeping_Information_Secret();
         //Assignment 1: Word Play
         //ckis.testWordPlay();
         //Assignment 2: Caesar Cipher
-        ckis.testCaesarCipherMy();
+        //ckis.testCaesarCipherMy();
+        //Programming Exercise: Breaking the Caesar Cipher
+        //Assignment 1: Word lengths
+        ckis.testWordLengths();
     }
     
 }
