@@ -42,6 +42,7 @@ public class Cryptography_Keeping_Information_Secret {
     public void testCaesarCipherMy() {
         CaesarCipherMy cc = new CaesarCipherMy();
         String ret1 = cc.encrypt("FIRST LEGION ATTACK EAST FLANK!", 23);
+        String ret4 = cc.encrypt("XXX YYY HJKL", 23);
         String ret2 = cc.encryptMod("At noon be in the conference room with your hat on for a surprise party. YELL LOUD!", 15);
         String ret3 = cc.encryptTwoKeys("At noon be in the conference room with your hat on for a surprise party. YELL LOUD!", 8, 21);
         //System.out.println(ret1);
@@ -56,16 +57,43 @@ public class Cryptography_Keeping_Information_Secret {
         wl.countWordLengthsWithIsLettermethod(fr, counts);
     }
     
+    public void testDiceRolling() {
+        DiceRolling dr = new DiceRolling();
+        dr.simpleSimulate(10000);
+        System.out.println();
+        dr.simulate(10000);
+    }
+    
+    public void testCaesarBreaker() {
+        CaesarBreaker cb = new CaesarBreaker();
+        
+        //("FIRST LEGION ATTACK EAST FLANK!", 23)
+        String decrypt = cb.decrypt("CFOPQ IBDFLK XQQXZH BXPQ CIXKH!");
+        
+        //String ret4 = cc.encrypt("XXX YYY HJKL", 23);
+        String decrypt1 = cb.decrypt("UUU VVV EGHI");
+        
+        String decrypt2 = cb.decrypt("Pi cddc qt xc iwt rdcutgtcrt gddb lxiw ndjg wpi dc udg p hjgegxht epgin. NTAA ADJS!");
+        
+        String decrypt3 = cb.decryptMod("Pi cddc qt xc iwt rdcutgtcrt gddb lxiw ndjg wpi dc udg p hjgegxht epgin. NTAA ADJS!");
+        System.out.println(decrypt3);
+    }
+    
+    
     public static void main(String[] args) {
         // TODO code application logic here
         Cryptography_Keeping_Information_Secret ckis = new Cryptography_Keeping_Information_Secret();
         //Assignment 1: Word Play
         //ckis.testWordPlay();
         //Assignment 2: Caesar Cipher
-        //ckis.testCaesarCipherMy();
+        ckis.testCaesarCipherMy();
         //Programming Exercise: Breaking the Caesar Cipher
         //Assignment 1: Word lengths
-        ckis.testWordLengths();
+        //ckis.testWordLengths();
+        //testing dice rolling
+        //ckis.testDiceRolling();
+        //test decrypt
+        ckis.testCaesarBreaker();
     }
     
 }

@@ -1,3 +1,5 @@
+package cryptography_keeping_information_secret;
+
 
 /**
  * Simulate rolling two six-sided die, keep statistics
