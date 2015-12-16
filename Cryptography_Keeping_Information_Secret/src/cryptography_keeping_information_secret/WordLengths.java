@@ -116,10 +116,10 @@ public class WordLengths {
                counts[counts.length-1] += 1; 
             } else
             //right algorithm
-            if( counts[wordSize] != 0) {
+            if( wordSize> 0 && counts[wordSize] != 0  ) {
                 counts[wordSize] += 1;
                 
-            } else {
+            } else if ( wordSize> 0) {
                 counts[wordSize] = 1;
             }
         }

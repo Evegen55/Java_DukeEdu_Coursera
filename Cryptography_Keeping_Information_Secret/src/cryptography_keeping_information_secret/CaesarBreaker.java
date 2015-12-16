@@ -112,13 +112,71 @@ public class CaesarBreaker {
      * half String and use the two key encryption method to find the message. Note this example is so
      * small it likely won’t find the keys, but it illustrates how to take the Strings apart.
      * 
+     * This method attempts to determine the two keys used to encrypt the message, 
+     * prints the two keys, and then returns the decrypted String with those two keys. 
+     * More specifically, this method should:
+     *     ○ Calculate a String of every other character starting with the first character of the
+     *       encrypted String by calling halfOfString.
+     *     ○ Calculate a String of every other character starting with the second character of
+     *      the encrypted String.
+     *     ○ Then calculate the key used to encrypt each half String.
+     *     ○ You should print the two keys found.
+     *     ○ Calculate and return the decrypted String using the encryptTwoKeys method
+     *      from your CaesarCipher class, again making sure it is in the same folder as your
+     *      CaesarBreaker class.
+     * 
      * @param encrypted
      * @return 
      */
     public String decryptTwoKeys (String encrypted) {
-        String decrypt = decrypt(encrypted);
+        CaesarCipherMy ccM = new CaesarCipherMy();
+        String firstHalf = halfOfString(encrypted, 0);
+        String secondHalf = halfOfString(encrypted, 1);
+        System.out.println("firstHalf" + "\t" + firstHalf + "\t"  + "secondHalf" + "\t" + secondHalf);
         
+        int firstKey = getKey(firstHalf);
+        int secondKey = getKey(secondHalf);
+        
+        System.out.println("firstKey" + "\t" + firstKey + "\t"  + "secondKey" + "\t" + secondKey);
+        
+        return ccM.encryptTwoKeys(encrypted, firstKey, secondKey);
+    }
+    
+    /**
+     * This method should return a new String that is every other character from message 
+     * starting with the start position. For example, the call halfOfString(“Qbkm Zgis”, 0) 
+     * returns the String “Qk gs” and the call halfOfString(“Qbkm Zgis”, 1) returns the String
+     * “bm Zi” . Be sure to test this method with a small example.
+     * 
+     * @param message
+     * @param start
+     * @return 
+     */
+    public String halfOfString(String message, int start) {
+        if (start != 1 || start != 0) {
+        StringBuilder sb = new StringBuilder();
+        for (char c : message.toCharArray()) {
+            int idx = message.indexOf(c);
+            if(idx%2 == start) {
+            sb = sb.append(c);
+            }
+        }
+        return sb.toString();
+        }
         return null;
+    }
+    
+    /**
+     * This method should call countLetters to get an array of the letter frequencies in String s
+     * and then use maxIndex to calculate the index of the largest letter frequency, which is
+     * the location of the encrypted letter ‘e’, which leads to the key, which is returned.
+     * 
+     * @param s 
+     * @return  
+     */
+    public int getKey(String s) {
+        int[] freqs = countLettersMod(s);
+        return maxIndex(freqs);
     }
 }
     

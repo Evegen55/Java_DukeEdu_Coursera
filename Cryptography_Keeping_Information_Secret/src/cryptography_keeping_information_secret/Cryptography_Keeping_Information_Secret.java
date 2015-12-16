@@ -45,14 +45,25 @@ public class Cryptography_Keeping_Information_Secret {
         String ret4 = cc.encrypt("XXX YYY HJKL", 23);
         String ret2 = cc.encryptMod("At noon be in the conference room with your hat on for a surprise party. YELL LOUD!", 15);
         String ret3 = cc.encryptTwoKeys("At noon be in the conference room with your hat on for a surprise party. YELL LOUD!", 8, 21);
-        //System.out.println(ret1);
-        System.out.println(ret2);
+        String ret5 = cc.encryptMod("Can you imagine life WITHOUT the internet AND computers in your pocket?", 15);
+        String ret6 = cc.encryptTwoKeys("Can you imagine life WITHOUT the internet AND computers in your pocket?", 21, 8);
+        //String ret8 = cc.encryptTwoKeys("The original name of Java was Oak.", 14, 24);
+        
+        for (int i = 0; i<27; i++) {
+            for (int k = 0; k<27; k++) {
+        String ret7 = cc.encryptTwoKeys("Uybi Gfqgykii Jgziegv Uigeixdiex Smiizzin", i, k);
+        System.out.println(ret7);
+            }
+    }
+
+        //System.out.println(ret8);
+        
         //System.out.println(ret3);
     }
     public void testWordLengths() {
         WordLengths wl = new WordLengths();
-        FileResource fr = new FileResource("data/smallHamlet.txt");
-        int counts[] = new int[31];
+        FileResource fr = new FileResource("data/manywords.txt");
+        int counts[] = new int[100];
         //wl.countWordLengths(fr, counts);
         wl.countWordLengthsWithIsLettermethod(fr, counts);
     }
@@ -76,7 +87,14 @@ public class Cryptography_Keeping_Information_Secret {
         String decrypt2 = cb.decrypt("Pi cddc qt xc iwt rdcutgtcrt gddb lxiw ndjg wpi dc udg p hjgegxht epgin. NTAA ADJS!");
         
         String decrypt3 = cb.decryptMod("Pi cddc qt xc iwt rdcutgtcrt gddb lxiw ndjg wpi dc udg p hjgegxht epgin. NTAA ADJS!");
-        System.out.println(decrypt3);
+        
+        String decTwoKeys = cb.decryptTwoKeys("Hfs cpwewloj loks cd Hoto kyg Cyy.");
+        
+        String brake = cb.halfOfString("Qbkm Zgis", 1);
+        
+        //System.out.println(decrypt3);
+        //System.out.println(brake);
+        System.out.println(decTwoKeys);
     }
     
     
@@ -93,7 +111,7 @@ public class Cryptography_Keeping_Information_Secret {
         //testing dice rolling
         //ckis.testDiceRolling();
         //test decrypt
-        ckis.testCaesarBreaker();
+        //ckis.testCaesarBreaker();
     }
     
 }
