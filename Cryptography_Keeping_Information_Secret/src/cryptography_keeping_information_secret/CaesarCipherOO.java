@@ -9,8 +9,23 @@ package cryptography_keeping_information_secret;
  *
  * @author Johnn
  */
-public class CaesarCipherMy {
+public class CaesarCipherOO {
+    private String abc;
+    private String shiftedAbc;
+    private String small;
+    private String shiftedAbcSmall;
     
+    /**
+     * 
+     * @param key 
+     */
+    public CaesarCipherOO(int key) {
+        abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        shiftedAbc = abc.substring(key)+abc.substring(0,key);
+        small = "abcdefghijklmnopqrstuvwxyz";
+        shiftedAbcSmall = small.substring(key)+small.substring(0,key);
+        
+    }
     /**
      * This method returns a string that has been encrypted using the Caesar Cipher Algorithm 
      * explained in the videos. Assume that all the alphabetic characters are uppercase letters. 
@@ -18,13 +33,10 @@ public class CaesarCipherMy {
      * "CFOPQ IBDFLK XQQXZH BXPQ CIXKH!"
      * 
      * @param input
-     * @param key
      * @return 
      */
-    public String encrypt(String input, int key) {
+    public String encrypt(String input) {
         StringBuilder enc = new StringBuilder(input);
-        String abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        String shiftedAbc = abc.substring(key)+abc.substring(0,key);
         for(int i = 0; i < enc.length(); i++) {
             char currChar = enc.charAt(i);
             int idx = abc.indexOf(currChar);
@@ -40,17 +52,10 @@ public class CaesarCipherMy {
      * For example, encrypt("First Legion", 23) should return “Cfopq Ibdflk” and 
      * encrypt("First Legion", 17) should return “Wzijk Cvxzfe”. Be sure to test the encrypt method.
      * @param input
-     * @param key
      * @return 
      */
-    public String encryptMod(String input, int key) {
+    public String encryptMod(String input) {
         StringBuilder enc = new StringBuilder(input);
-        String abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        String small = "abcdefghijklmnopqrstuvwxyz";
-        
-        String shiftedAbc = abc.substring(key)+abc.substring(0,key);
-        String shiftedAbcSmall = small.substring(key)+small.substring(0,key);
-        
         for(int i = 0; i < enc.length(); i++) {
             //work with big letters 
             char currChar = enc.charAt(i);
@@ -82,6 +87,7 @@ public class CaesarCipherMy {
      * @return 
      */
     public String encryptTwoKeys(String input,int key1, int key2) {
+        //TODO!!!!!!!!!
         String encKey1 = encryptMod(input,key1);
         String encKey2 = encryptMod(input,key2);
         StringBuilder enc = new StringBuilder(input);
