@@ -32,7 +32,7 @@ public class MiniProject_Vigenere_Cipher {
         
         key = 17;
         CaesarCipherOO cc2 = new CaesarCipherOO(key);
-        String encryptMod2 = cc1.encryptMod("First Legion");
+        String encryptMod2 = cc2.encryptMod("First Legion");
         
         System.out.println("encryptBig" + "\t" + encryptBig + "\n" + "encryptMod" + "\t" + encryptMod + "\n" + "encryptMod2" + "\t" + encryptMod2);
     }
