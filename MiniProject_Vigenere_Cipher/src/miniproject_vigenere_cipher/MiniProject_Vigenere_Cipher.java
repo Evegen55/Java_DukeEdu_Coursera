@@ -96,12 +96,28 @@ public class MiniProject_Vigenere_Cipher {
      * You can test methods from VigenereCipher class in the tester class by creating a VigenereCipher
      * object with the key “rome”, which is {17, 14, 12, 4} in integers and encrypting and
      * decrypting the file titussmall. txt , the encrypted first line of which is 
-     * “Tcmppxety mj nikhqv htee mrfhtii tyv”.
+     * "Tcmp-pxety mj nikhqv htee mrfhtii tyv".
      */
-    public void VigenereCipher() {
-        
+    public void testVigenereCipher() {
+        filename = "titus-small.txt";
+        int[] keyArr = {17, 14, 12, 4};
+        VigenereCipher cv = new VigenereCipher(keyArr);
+        FileResource fr = new FileResource(folder+separator+filename);
+        String asString = fr.asString();
+        String dec = cv.encrypt(asString);
+        System.out.println();
+        System.out.println(dec);
     }
-    
+    public void testVigenereBreaker() {
+        VigenereBreaker vb = new VigenereBreaker();
+        String sliceString = vb.sliceString("abcdefghijklm", 0, 3);
+        String sliceString2 = vb.sliceString("abcdefghijklm", 1, 3);
+        String sliceString3 = vb.sliceString("abcdefghijklm", 2, 5);
+        System.out.println();
+        System.out.println(sliceString);
+        System.out.println(sliceString2);
+        System.out.println(sliceString3);
+    }
     
     
     /**
@@ -112,10 +128,16 @@ public class MiniProject_Vigenere_Cipher {
         //test testCaesarCipherOO
         //mp.testCaesarCipherOO();
         //test CaesarCipher
-        mp.testCaesarCipher();
-        System.out.println();
+        //mp.testCaesarCipher();
+        //System.out.println();
         // test CaesarCracker
-        mp.testCaesarCracker();
+        //mp.testCaesarCracker();
+        // test VigenereCipher
+        //System.out.println("test VigenereCipher");
+        //mp.testVigenereCipher();
+        // test VigenereBreaker
+        System.out.println("test VigenereBreaker");
+        mp.testVigenereBreaker();
         
     }
     
