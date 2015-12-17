@@ -1,7 +1,5 @@
 package miniproject_vigenere_cipher;
 
-import edu.duke.*;
-
 public class CaesarCracker {
     char mostCommon;
     
