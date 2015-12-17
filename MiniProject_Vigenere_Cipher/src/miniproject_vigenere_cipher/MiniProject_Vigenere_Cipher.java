@@ -28,7 +28,7 @@ public class MiniProject_Vigenere_Cipher {
     private final String folder = "data";
     private final String subFolder1 = "messages";
     private final String subFolder2 = "dictionaries";
-    private final String filename = "titus-small.txt";
+    private String filename;
     private final String separator = "/";
     
     /**
@@ -51,6 +51,7 @@ public class MiniProject_Vigenere_Cipher {
      */
     public void testCaesarCipher() {
         key = 5;
+        filename = "titus-small.txt";
         CaesarCipher cc = new CaesarCipher(key);
         FileResource fr = new FileResource(folder+separator+filename);
         System.out.println("testing string encryted and decrypted");
@@ -63,7 +64,6 @@ public class MiniProject_Vigenere_Cipher {
             
             
         }
-        
         System.out.println("testing char encryted and decrypted");
         for (String line : fr.lines()) {
             for (char c : line.toCharArray()) {
@@ -71,10 +71,34 @@ public class MiniProject_Vigenere_Cipher {
                 char decCh = cc.decryptLetter(encCh);
                 System.out.println("before enc" + "\t" + c + "\t" + "after enc" + "\t" + encCh + "\t" + "after dec" + "\t" + decCh);
             }
-            
-            
-            
         }
+    }
+    
+    public void testCaesarCracker() {
+        filename = "titus-small_key5.txt";
+        CaesarCracker ccr = new CaesarCracker();
+        CaesarCracker ccr2 = new CaesarCracker('a');
+        FileResource fr = new FileResource(folder+separator+filename);
+        String asString = fr.asString();
+        //--------------------------------------------
+        //bad way for decrypting because statistical data for most common letter is bad
+        for (String line : fr.lines()) {
+            String decByCracker = ccr.decrypt(line);
+            System.out.println("String after decrypting" + "\t" + "\t" + decByCracker );
+        }
+        //--------------------------------------------
+        System.out.println();
+        String decByCrackerasString = ccr.decrypt(asString);
+        System.out.println("String after decrypting" + "\n" + decByCrackerasString);
+    }
+    
+    /**
+     * You can test methods from VigenereCipher class in the tester class by creating a VigenereCipher
+     * object with the key “rome”, which is {17, 14, 12, 4} in integers and encrypting and
+     * decrypting the file titussmall. txt , the encrypted first line of which is 
+     * “Tcmppxety mj nikhqv htee mrfhtii tyv”.
+     */
+    public void VigenereCipher() {
         
     }
     
@@ -89,6 +113,9 @@ public class MiniProject_Vigenere_Cipher {
         //mp.testCaesarCipherOO();
         //test CaesarCipher
         mp.testCaesarCipher();
+        System.out.println();
+        // test CaesarCracker
+        mp.testCaesarCracker();
         
     }
     

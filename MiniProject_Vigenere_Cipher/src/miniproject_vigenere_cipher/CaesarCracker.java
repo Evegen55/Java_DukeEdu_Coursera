@@ -2,15 +2,24 @@ package miniproject_vigenere_cipher;
 
 public class CaesarCracker {
     char mostCommon;
-    
+    /**
+     * 
+     */
     public CaesarCracker() {
         mostCommon = 'e';
     }
-    
+    /**
+     * 
+     * @param c 
+     */
     public CaesarCracker(char c) {
         mostCommon = c;
     }
-    
+    /**
+     * 
+     * @param message
+     * @return 
+     */
     public int[] countLetters(String message){
         String alph = "abcdefghijklmnopqrstuvwxyz";
         int[] counts = new int[26];
@@ -22,7 +31,11 @@ public class CaesarCracker {
         }
         return counts;
     }
-    
+    /**
+     * 
+     * @param vals
+     * @return 
+     */
     public int maxIndex(int[] vals){
         int maxDex = 0;
         for(int k=0; k < vals.length; k++){
@@ -32,7 +45,13 @@ public class CaesarCracker {
         }
         return maxDex;
     }
-
+    /**
+     * Finding the key has been separated from decrypting the message. You can use
+     * the method getKey to pass in an encrypted message and receive the key back.
+     * 
+     * @param encrypted
+     * @return 
+     */
     public int getKey(String encrypted){
         int[] freqs = countLetters(encrypted);
         int maxDex = maxIndex(freqs);
@@ -43,7 +62,11 @@ public class CaesarCracker {
         }
         return dkey;
     }
-    
+    /**
+     * 
+     * @param encrypted
+     * @return 
+     */
     public String decrypt(String encrypted){
         int key = getKey(encrypted);
         CaesarCipher cc = new CaesarCipher(key);
