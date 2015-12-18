@@ -2,6 +2,9 @@ package miniproject_vigenere_cipher;
 
 import java.util.*;
 import edu.duke.*;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 
 public class VigenereBreaker {
     /**
@@ -89,5 +92,69 @@ public class VigenereBreaker {
             System.out.println(i);
         }
     }
+    /**
+     * 
+     * @param fr
+     * @return 
+     */
+    public HashSet<String> readDictionary(FileResource fr) {
+        HashSet<String> hs = new HashSet<String>();
+        for (String line : fr.lines()) {
+            hs.add(line.toLowerCase());
+        }
+        return hs;
+    }
+    /**
+     * 
+     * @param message
+     * @param dictionary
+     * @return This method should return the integer count of how many valid words it found
+     * 
+     */
+    public int countWords(String message, HashSet<String> dictionary) {
+        int counts = 0;
+        String[] split = message.split("\\W");
+        for (String iter : split) {
+            if (dictionary.contains(iter)) {
+                counts++;
+            }
+        }
+        return counts;
+    }
     
+    public String breakForLanguage(String encrypted, HashSet<String> dictionary) throws FileNotFoundException {
+       PrintWriter writer = new PrintWriter("the-file-name.txt");
+       
+       String decrypt = null; 
+       for(int i = 1; i < 101; i++) {
+            int[] kl =  tryKeyLength(encrypted, i, 'e');
+            VigenereCipher vc = new VigenereCipher(kl);
+            decrypt = vc.decrypt(encrypted);
+            int countWords = countWords(decrypt, dictionary);
+            
+            //print
+            for (int k : kl) {
+                //System.out.print("keys" + "\t" + k + "\t");
+                writer.print("keys" + "\t" + k + "\t");
+            }
+            //System.out.println();
+            //System.out.println("countWords" + "\t" +countWords);
+            writer.println("countWords" + "\t" +countWords);
+            //System.out.println();
+            //System.out.println(decrypt);
+            //System.out.println();
+            //System.out.println();
+            writer.println(decrypt);
+            writer.println("============================================================================");
+            
+            
+            /*
+            if(kl.length>2) {
+                break;
+            }
+            */
+        }
+       writer.close(); 
+        return decrypt;
+    }
 }

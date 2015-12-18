@@ -6,6 +6,9 @@
 package miniproject_vigenere_cipher;
 
 import edu.duke.FileResource;
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
+import java.util.HashSet;
 
 /**
  *
@@ -135,11 +138,26 @@ public class MiniProject_Vigenere_Cipher {
         vb.breakVigenere();
     }
     
+    public void testVigenereBreakerWithDictionary() throws FileNotFoundException, UnsupportedEncodingException {
+        filename = "secretmessage2.txt";
+        String fileDict = "English";
+        FileResource fr = new FileResource(folder+separator+filename);
+         String asString = fr.asString();
+        FileResource frDic = new FileResource(folder+separator+subFolder2+separator+fileDict);
+        
+        VigenereBreaker vb = new VigenereBreaker();
+        HashSet<String> readDictionary = vb.readDictionary(frDic);
+        String breakForLanguage = vb.breakForLanguage(asString, readDictionary);
+        
+        
+        
+    }
+    
     
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
         MiniProject_Vigenere_Cipher mp = new MiniProject_Vigenere_Cipher();
         //test testCaesarCipherOO
         //mp.testCaesarCipherOO();
@@ -155,8 +173,10 @@ public class MiniProject_Vigenere_Cipher {
         //System.out.println("test VigenereBreaker");
         //mp.testVigenereBreaker();
         // test VigenereBreakerForFile
-        System.out.println("test VigenereBreakerForFile");
-        mp.testVigenereBreakerForFile();
+        //System.out.println("test VigenereBreakerForFile");
+        //mp.testVigenereBreakerForFile();
+        // test with dictionary
+        mp.testVigenereBreakerWithDictionary();
         
     }
     
