@@ -77,13 +77,17 @@ public class VigenereBreaker {
      */
 
     public void breakVigenere () {
-        //WRITE YOUR CODE HERE
         FileResource fr = new FileResource();
         String asString = fr.asString();
-        int[] tryKeyLengthtest = tryKeyLength(asString, 5, 'e');
+        int[] tryKeyLengthtest = tryKeyLength(asString, 4, 'e');
         VigenereCipher vc = new VigenereCipher(tryKeyLengthtest);
         String decrypt = vc.decrypt(asString);
         System.out.println(decrypt);
+        
+        //code for quiz
+        for (int i : tryKeyLengthtest) {
+            System.out.println(i);
+        }
     }
     
 }
