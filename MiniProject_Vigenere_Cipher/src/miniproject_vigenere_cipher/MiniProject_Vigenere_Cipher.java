@@ -110,6 +110,7 @@ public class MiniProject_Vigenere_Cipher {
     }
     public void testVigenereBreaker() {
         VigenereBreaker vb = new VigenereBreaker();
+        //----------------------------------------------
         String sliceString = vb.sliceString("abcdefghijklm", 0, 3);
         String sliceString2 = vb.sliceString("abcdefghijklm", 1, 3);
         String sliceString3 = vb.sliceString("abcdefghijklm", 2, 5);
@@ -117,6 +118,21 @@ public class MiniProject_Vigenere_Cipher {
         System.out.println(sliceString);
         System.out.println(sliceString2);
         System.out.println(sliceString3);
+        //----------------------------------------------
+        System.out.println();
+        System.out.println();
+        filename = "athens_keyflute.txt";
+        FileResource fr = new FileResource(folder+separator+filename);
+        String asString = fr.asString();
+        int[] tryKeyLengthtest = vb.tryKeyLength(asString, 5, 'e');
+        for(int i :  tryKeyLengthtest) {
+            System.out.println(i);
+        }
+        //----------------------------------------------
+    }
+    public void testVigenereBreakerForFile() {
+        VigenereBreaker vb = new VigenereBreaker();
+        vb.breakVigenere();
     }
     
     
@@ -136,8 +152,11 @@ public class MiniProject_Vigenere_Cipher {
         //System.out.println("test VigenereCipher");
         //mp.testVigenereCipher();
         // test VigenereBreaker
-        System.out.println("test VigenereBreaker");
-        mp.testVigenereBreaker();
+        //System.out.println("test VigenereBreaker");
+        //mp.testVigenereBreaker();
+        // test VigenereBreakerForFile
+        System.out.println("test VigenereBreakerForFile");
+        mp.testVigenereBreakerForFile();
         
     }
     
